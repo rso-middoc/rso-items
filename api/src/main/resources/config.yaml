@@ -9,7 +9,7 @@ kumuluzee:
       port: 8080
   datasources:
     - jndi-name: jdbc/ItemsDS
-      connection-url: jdbc:postgresql://127.0.0.1:5432/items
+      connection-url: jdbc:postgresql://172.17.0.1:5432/items
       username: dbuser
       password: postgres
       max-pool-size: 20
