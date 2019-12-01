@@ -1,0 +1,1 @@
+INSERT INTO items (title, description, format, created, uri) VALUES ('Our fist item', 'This is the first item that we created for the RSO course.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf');
