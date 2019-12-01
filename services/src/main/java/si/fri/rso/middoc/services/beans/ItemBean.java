@@ -1,12 +1,13 @@
 package src.main.java.si.fri.rso.middoc.services.beans;
 
+import com.kumuluz.ee.discovery.annotations.DiscoverService;
 import com.kumuluz.ee.rest.beans.QueryParameters;
 import com.kumuluz.ee.rest.utils.JPAUtils;
 import src.main.java.si.fri.rso.middoc.models.converters.ItemsConverter;
 import src.main.java.si.fri.rso.middoc.models.entities.ItemEntity;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -23,7 +24,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 
-@ApplicationScoped
+@RequestScoped
 public class ItemBean {
 
     private Logger log = Logger.getLogger(ItemBean.class.getName());
@@ -98,7 +99,7 @@ public class ItemBean {
             return null;
         }
 
-        ItemEntity updatedItemEntity = new ItemEntity();
+        ItemEntity updatedItemEntity = ItemsConverter.toEntity(item);
 
         try {
             beginTx();

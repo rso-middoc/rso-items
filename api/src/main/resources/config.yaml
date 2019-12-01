@@ -1,5 +1,5 @@
 kumuluzee:
-  name: rso-items
+  name: items-service
   env:
     name: dev
   version: 1.0.0
@@ -13,3 +13,10 @@ kumuluzee:
       username: dbuser
       password: postgres
       max-pool-size: 20
+  discovery:
+    etcd:
+      hosts: http://192.168.29.109:2379
+
+configuration-properties:
+  test-var:
+    enabled: true
