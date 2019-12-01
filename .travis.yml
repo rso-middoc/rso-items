@@ -9,7 +9,7 @@ cache:
   directories:
     - "$HOME/.m2"
 env:
-  matrix:
+  global:
     - DOCKER_IMAGE=iramovs/rso-items:1.0.0-SNAPSHOT-$TRAVIS_JOB_NUMBER
 script:
   - mvn clean package -U
