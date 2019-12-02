@@ -130,25 +130,6 @@ public class ItemBean {
         return true;
     }
 
-    @GET
-    @Path("info")
-    public Response info() {
-        String message = "{\n" +
-                "    \"clani\": [\"ir8617\"],\n" +
-                "    \"opis_projekta\": \"Preprosta aplikacija za shranjevanje in obdelavo e-knjig in dokumentov.\",\n" +
-                "    \"mikrostoritve\": [\"http://34.77.80.201:8080/v1/items\"],\n" +
-                "    \"github\": [\"https://github.com/rso-middoc/rso-items\"],\n" +
-                "    \"travis\": [\"https://travis-ci.org/rso-middoc/rso-items\"],\n" +
-                "    \"dockerhub\": [\"https://hub.docker.com/repository/docker/iramovs/rso-items\"]\n" +
-                "}";
-
-        return Response
-                .status(Response.Status.OK)
-                .entity(message)
-                .type(MediaType.APPLICATION_JSON)
-                .build();
-    }
-
     private void beginTx() {
         if (!em.getTransaction().isActive())
             em.getTransaction().begin();
