@@ -1,1 +1,4 @@
-INSERT INTO items (title, description, format, created, uri) VALUES ('Our fist item', 'This is the first item that we created for the RSO course.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf');
+INSERT INTO items (title, description, format, created, uri) VALUES ('Harry Potter and the Philosophers Stone', 'Author: J. K. Rowling.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://todo.si/todo1.pdf');
+INSERT INTO items (title, description, format, created, uri) VALUES ('Harry Potter and the Chamber of Secrets', 'Author: J. K. Rowling.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://todo.si/todo2.pdf');
+INSERT INTO items (title, description, format, created, uri) VALUES ('Harry Potter and the Prisoner of Azkaban', 'Author: J. K. Rowling.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://todo.si/todo3.pdf');
+INSERT INTO items (title, description, format, created, uri) VALUES ('Harry Potter and the Goblet of Fire', 'Author: J. K. Rowling.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://todo.si/todo4.pdf');

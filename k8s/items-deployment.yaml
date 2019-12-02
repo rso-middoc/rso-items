@@ -13,7 +13,7 @@ spec:
         app: items
     spec:
       containers:
-        - image: iramovs/rso-items:1.0.0-SNAPSHOT-2.1
+        - image: iramovs/rso-items:1.0.0-SNAPSHOT-4.1
           name: items
           env:
             - name: KUMULUZEE_DISCOVERY_CLUSTER
@@ -23,7 +23,7 @@ spec:
             - name: KUMULUZEE_CONFIG_ETCD_HOSTS
               value: http://etcd:2379
             - name: KUMULUZEE_SERVER_BASEURL
-              value: http://35.240.79.227:8080
+              value: http://35.240.44.113:8080
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
               value: jdbc:postgresql://34.77.223.0:5432/postgres
             - name: KUMULUZEE_DATASOURCES0_USERNAME

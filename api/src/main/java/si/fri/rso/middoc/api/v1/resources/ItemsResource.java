@@ -53,7 +53,7 @@ public class ItemsResource {
             item = itemBean.createItem(item);
         }
 
-        return Response.status(Response.Status.CONFLICT).entity(item).build();
+        return Response.status(Response.Status.OK).entity(item).build();
 
     }
 
