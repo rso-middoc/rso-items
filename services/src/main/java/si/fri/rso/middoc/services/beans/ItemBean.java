@@ -11,13 +11,12 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.ws.rs.InternalServerErrorException;
-import javax.ws.rs.NotFoundException;
-import javax.ws.rs.ProcessingException;
-import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.*;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
 import java.util.logging.Logger;
@@ -129,6 +128,25 @@ public class ItemBean {
             return false;
 
         return true;
+    }
+
+    @GET
+    @Path("info")
+    public Response info() {
+        String message = "{\n" +
+                "    \"clani\": [\"ir8617\"],\n" +
+                "    \"opis_projekta\": \"Preprosta aplikacija za shranjevanje in obdelavo e-knjig in dokumentov.\",\n" +
+                "    \"mikrostoritve\": [\"http://34.77.80.201:8080/v1/items\"],\n" +
+                "    \"github\": [\"https://github.com/rso-middoc/rso-items\"],\n" +
+                "    \"travis\": [\"https://travis-ci.org/rso-middoc/rso-items\"],\n" +
+                "    \"dockerhub\": [\"https://hub.docker.com/repository/docker/iramovs/rso-items\"]\n" +
+                "}";
+
+        return Response
+                .status(Response.Status.OK)
+                .entity(message)
+                .type(MediaType.APPLICATION_JSON)
+                .build();
     }
 
     private void beginTx() {
