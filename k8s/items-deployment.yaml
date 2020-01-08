@@ -17,15 +17,29 @@ spec:
           name: items
           env:
             - name: KUMULUZEE_DISCOVERY_CLUSTER
-              value: gcloud
+              value: cluster-1
             - name: KUMULUZEE_DISCOVERY_ETCD_HOSTS
-              value: http://etcd:2379
+              value: http://10.11.245.103:2379
+            - name: KUMULUZEE_DISCOVERY_ETCD_USERNAME
+              value: root
+            - name: KUMULUZEE_DISCOVERY_ETCD_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: etcd-pass
+                  key: ETCD_PASSWORD
             - name: KUMULUZEE_CONFIG_ETCD_HOSTS
-              value: http://etcd:2379
+              value: http://10.11.245.103:2379
+            - name: KUMULUZEE_CONFIG_ETCD_USERNAME
+              value: root
+            - name: KUMULUZEE_CONFIG_ETCD_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: etcd-pass
+                  key: ETCD_PASSWORD
             - name: KUMULUZEE_SERVER_BASEURL
-              value: http://35.240.44.113:8080
+              value: http://104.198.64.160:8080
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-              value: jdbc:postgresql://34.77.223.0:5432/postgres
+              value: jdbc:postgresql://35.192.107.213:5432/postgres
             - name: KUMULUZEE_DATASOURCES0_USERNAME
               value: postgres
             - name: KUMULUZEE_DATASOURCES0_PASSWORD
