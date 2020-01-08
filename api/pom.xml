@@ -20,7 +20,10 @@
             <groupId>com.kumuluz.ee</groupId>
             <artifactId>kumuluzee-servlet-jetty</artifactId>
         </dependency>
-
+        <dependency>
+            <artifactId>kumuluzee-config-etcd</artifactId>
+            <groupId>com.kumuluz.ee.config</groupId>
+        </dependency>
         <dependency>
             <groupId>si.fri.rso.middoc</groupId>
             <artifactId>items-services</artifactId>

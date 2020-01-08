@@ -30,6 +30,9 @@ public class ItemEntity {
     @Column(name = "uri")
     private String uri;
 
+    @Column(name = "collection_id")
+    private Integer collectionId;
+
     public Integer getId() {
         return id;
     }
@@ -76,5 +79,13 @@ public class ItemEntity {
 
     public void setUri(String uri) {
         this.uri = uri;
+    }
+
+    public Integer getCollectionId() {
+        return collectionId;
+    }
+
+    public void setCollectionId(Integer collectionId) {
+        this.collectionId = collectionId;
     }
 }

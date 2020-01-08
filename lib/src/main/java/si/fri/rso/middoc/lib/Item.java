@@ -10,6 +10,9 @@ public class Item {
     private String format;
     private Instant created;
     private String uri;
+    private Integer collectionId;
+    private String collectionTitle;
+    private String similarCollections;
 
     public String getTitle() {
         return title;
@@ -57,5 +60,29 @@ public class Item {
 
     public void setFormat(String format) {
         this.format = format;
+    }
+
+    public Integer getCollectionId() {
+        return collectionId;
+    }
+
+    public void setCollectionId(Integer collectionId) {
+        this.collectionId = collectionId;
+    }
+
+    public String getCollectionTitle() {
+        return collectionTitle;
+    }
+
+    public void setCollectionTitle(String collectionTitle) {
+        this.collectionTitle = collectionTitle;
+    }
+
+    public String getSimilarCollections() {
+        return similarCollections;
+    }
+
+    public void setSimilarCollections(String similarCollections) {
+        this.similarCollections = similarCollections;
     }
 }

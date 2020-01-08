@@ -1,4 +1,4 @@
-INSERT INTO items (title, description, format, created, uri) VALUES ('Harry Potter and the Philosophers Stone', 'Author: J. K. Rowling.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://todo.si/todo1.pdf');
-INSERT INTO items (title, description, format, created, uri) VALUES ('Harry Potter and the Chamber of Secrets', 'Author: J. K. Rowling.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://todo.si/todo2.pdf');
-INSERT INTO items (title, description, format, created, uri) VALUES ('Harry Potter and the Prisoner of Azkaban', 'Author: J. K. Rowling.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://todo.si/todo3.pdf');
-INSERT INTO items (title, description, format, created, uri) VALUES ('Harry Potter and the Goblet of Fire', 'Author: J. K. Rowling.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://todo.si/todo4.pdf');
+INSERT INTO items (title, description, format, created, uri, collection_id) VALUES ('Harry Potter and the Philosophers Stone', 'Author: J. K. Rowling.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://todo.si/todo1.pdf', 2);
+INSERT INTO items (title, description, format, created, uri, collection_id) VALUES ('Harry Potter and the Chamber of Secrets', 'Author: J. K. Rowling.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://todo.si/todo2.pdf', 2);
+INSERT INTO items (title, description, format, created, uri, collection_id) VALUES ('Harry Potter and the Prisoner of Azkaban', 'Author: J. K. Rowling.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://todo.si/todo3.pdf', 2);
+INSERT INTO items (title, description, format, created, uri, collection_id) VALUES ('Harry Potter and the Goblet of Fire', 'Author: J. K. Rowling.', 'pdf', TIMESTAMP '2006-01-01 15:36:38', 'https://todo.si/todo4.pdf', 2);

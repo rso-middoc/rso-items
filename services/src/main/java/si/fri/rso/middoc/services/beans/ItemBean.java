@@ -3,6 +3,7 @@ package src.main.java.si.fri.rso.middoc.services.beans;
 import com.kumuluz.ee.discovery.annotations.DiscoverService;
 import com.kumuluz.ee.rest.beans.QueryParameters;
 import com.kumuluz.ee.rest.utils.JPAUtils;
+import src.main.java.si.fri.rso.middoc.lib.Item;
 import src.main.java.si.fri.rso.middoc.models.converters.ItemsConverter;
 import src.main.java.si.fri.rso.middoc.models.entities.ItemEntity;
 
@@ -19,9 +20,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-
+import src.main.java.si.fri.rso.middoc.services.config.IntegrationProperties;
 
 @RequestScoped
 public class ItemBean {
@@ -33,12 +35,17 @@ public class ItemBean {
 
     private Client httpClient;
 
-    private String baseUrl;
+    @Inject
+    @DiscoverService("collections-service")
+    private Optional<String> collectionsServiceBaseUrl;
+
+    @Inject
+    private IntegrationProperties integrationProperties;
 
     @PostConstruct
     private void init() {
         httpClient = ClientBuilder.newClient();
-        baseUrl = "http://localhost:8081"; // only for demonstration
+        //collectionsServiceBaseUrl = Optional.of("http://localhost:8081"); // demonstration on localhost
     }
 
 
@@ -68,7 +75,14 @@ public class ItemBean {
             throw new NotFoundException();
         }
 
-        return ItemsConverter.toDto(itemEntity);
+        Item item = ItemsConverter.toDto(itemEntity);
+
+        if (integrationProperties.isIntegrateWithCollectionsService()) {
+            item.setCollectionTitle(getCollectionTitle(id));
+            item.setSimilarCollections(getSimilarCollections(id));
+        }
+
+        return item;
     }
 
     public src.main.java.si.fri.rso.middoc.lib.Item createItem(src.main.java.si.fri.rso.middoc.lib.Item item) {
@@ -143,6 +157,44 @@ public class ItemBean {
     private void rollbackTx() {
         if (em.getTransaction().isActive())
             em.getTransaction().rollback();
+    }
+
+    public String getCollectionTitle(Integer collectionId) {
+
+        if (collectionsServiceBaseUrl.isPresent()) {
+
+            log.info("Calling collections service: getting collection title.");
+
+            try {
+                return httpClient
+                        .target(collectionsServiceBaseUrl.get() + "/v1/collections/" + collectionId + "/title")
+                        .request().get(new GenericType<String>() {
+                        });
+            } catch (WebApplicationException | ProcessingException e) {
+                log.severe(e.getMessage());
+                throw new InternalServerErrorException(e);
+            }
+        }
+        return null;
+    }
+
+    public String getSimilarCollections(Integer collectionId) {
+
+        if (collectionsServiceBaseUrl.isPresent()) {
+
+            log.info("Calling collections service: getting similar collections.");
+
+            try {
+                return httpClient
+                        .target(collectionsServiceBaseUrl.get() + "/v1/collections/" + collectionId + "/similar")
+                        .request().get(new GenericType<String>() {
+                        });
+            } catch (WebApplicationException | ProcessingException e) {
+                log.severe(e.getMessage());
+                throw new InternalServerErrorException(e);
+            }
+        }
+        return null;
     }
 
 }

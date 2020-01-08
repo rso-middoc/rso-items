@@ -13,6 +13,7 @@ public class ItemsConverter {
         dto.setTitle(entity.getTitle());
         dto.setFormat(entity.getFormat());
         dto.setUri(entity.getUri());
+        dto.setCollectionId(entity.getCollectionId());
 
         return dto;
 
@@ -26,6 +27,7 @@ public class ItemsConverter {
         entity.setTitle(dto.getTitle());
         entity.setFormat(dto.getFormat());
         entity.setUri(dto.getUri());
+        entity.setCollectionId(dto.getCollectionId());
 
         return entity;
 
