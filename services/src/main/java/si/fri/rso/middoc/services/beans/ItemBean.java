@@ -78,8 +78,8 @@ public class ItemBean {
         Item item = ItemsConverter.toDto(itemEntity);
 
         if (integrationProperties.isIntegrateWithCollectionsService()) {
-            item.setCollectionTitle(getCollectionTitle(id));
-            item.setSimilarCollections(getSimilarCollections(id));
+            item.setCollectionTitle(getCollectionTitle(item.getCollectionId()));
+            item.setSimilarCollections(getSimilarCollections(item.getCollectionId()));
         }
 
         return item;
