@@ -84,7 +84,7 @@ public class ItemsResource {
         }
     }
 
-    @GET
+    /*@GET
     @Path("info")
     public Response info() {
         String message = "{\n" +
@@ -101,6 +101,12 @@ public class ItemsResource {
                 .entity(message)
                 .type(MediaType.APPLICATION_JSON)
                 .build();
+    }*/
+
+    @GET
+    @Path("{itemId}/compress")
+    public Response compressPdf(@PathParam("itemId") Integer itemId) {
+        return Response.ok(itemBean.compressItemPdf(itemId)).build();
     }
 
 

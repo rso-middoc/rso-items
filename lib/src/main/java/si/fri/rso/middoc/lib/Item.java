@@ -13,6 +13,7 @@ public class Item {
     private Integer collectionId;
     private String collectionTitle;
     private String similarCollections;
+    private String compressedDownload;
 
     public String getTitle() {
         return title;
@@ -84,5 +85,13 @@ public class Item {
 
     public void setSimilarCollections(String similarCollections) {
         this.similarCollections = similarCollections;
+    }
+
+    public String getCompressedDownload() {
+        return compressedDownload;
+    }
+
+    public void setCompressedDownload(String compressedDownload) {
+        this.compressedDownload = compressedDownload;
     }
 }
