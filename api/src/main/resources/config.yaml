@@ -25,8 +25,10 @@ kumuluzee:
         type: liveness
         jndi-name: jdbc/ItemsDS
       http-health-check:
+        type: liveness
         connection-url: http://localhost:8080/v1/items/compression
       disk-space-health-check:
+        type: liveness
         threshold: 100000000
   metrics:
     web-instrumentation:
