@@ -237,4 +237,8 @@ public class ItemBean {
         return null;
     }
 
+    public boolean compressionReady() {
+        return integrationProperties.isCompressionReady();
+    }
+
 }

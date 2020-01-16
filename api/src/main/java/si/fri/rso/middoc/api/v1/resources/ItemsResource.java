@@ -1,5 +1,6 @@
 package src.main.java.si.fri.rso.middoc.api.v1.resources;
 
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import src.main.java.si.fri.rso.middoc.services.beans.ItemBean;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -104,9 +105,18 @@ public class ItemsResource {
     }*/
 
     @GET
+    @Timed
     @Path("{itemId}/compress")
     public Response compressPdf(@PathParam("itemId") Integer itemId) {
         return Response.ok(itemBean.compressItemPdf(itemId)).build();
+    }
+
+    @GET
+    @Path("compression")
+    public Response compression() {
+        if (itemBean.compressionReady())
+            return Response.ok().build();
+        return Response.status(400).entity("Not ready").build();
     }
 
 

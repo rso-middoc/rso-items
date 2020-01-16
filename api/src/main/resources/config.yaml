@@ -19,6 +19,17 @@ kumuluzee:
   discovery:
     etcd:
       hosts: http://localhost:2379
+  health:
+    checks:
+      data-source-health-check:
+        type: liveness
+        jndi-name: jdbc/ItemsDS
+      http-health-check:
+        connection-url: http://localhost:8080/v1/items/compression
+  metrics:
+    web-instrumentation:
+      - name: items-endpoint
+        url-pattern: /v1/items/*
 
 configuration-properties:
   collections-service:
