@@ -13,7 +13,7 @@ spec:
         app: items
     spec:
       containers:
-        - image: iramovs/rso-items:1.0.0-SNAPSHOT-4.1
+        - image: iramovs/rso-items:1.0.0-SNAPSHOT-12.1
           name: items
           env:
             - name: KUMULUZEE_DISCOVERY_CLUSTER
@@ -51,14 +51,25 @@ spec:
             - containerPort: 8080
               name: server
               protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
   name: items
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 8080
       protocol: TCP
