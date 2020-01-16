@@ -1,5 +1,6 @@
 package src.main.java.si.fri.rso.middoc.api.v1.resources;
 
+import org.eclipse.microprofile.metrics.annotation.Counted;
 import org.eclipse.microprofile.metrics.annotation.Timed;
 import src.main.java.si.fri.rso.middoc.services.beans.ItemBean;
 
@@ -33,6 +34,7 @@ public class ItemsResource {
     }
 
     @GET
+    @Counted(name = "solo_item_counter")
     @Path("/{itemId}")
     public Response getItem(@PathParam("itemId") Integer itemId) {
 
@@ -105,7 +107,7 @@ public class ItemsResource {
     }*/
 
     @GET
-    @Timed
+    @Timed(name = "compression_method")
     @Path("{itemId}/compress")
     public Response compressPdf(@PathParam("itemId") Integer itemId) {
         return Response.ok(itemBean.compressItemPdf(itemId)).build();
